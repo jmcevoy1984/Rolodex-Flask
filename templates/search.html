@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   <!-- <div id='main' class='container'>-->
+        <h3>Find Staff Members</h3>
+        <hr>
+        <div id='login-box' class='container'>
+            <form class='form-inline' onsubmit="event.preventDefault(); search(document.getElementById('main-search-box').value);">
+                    <div class='form-group'>
+                        <div class='lbl-horizon col-md-2'>
+                        <strong>Search:</strong>
+                        </div>
+                        <div class='col-md-10'>
+                        <input id="main-search-box" type='search' class='form-control'>
+                        <button type='button' id='search-button' class='form-control btn btn-primary' onclick="search(document.getElementById('search-box').value);">
+                            <span class="glyphicon glyphicons-lg glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                </form>
+    </div>
+
+{% endblock %}

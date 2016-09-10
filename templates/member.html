@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+    var id = '{{ id }}';
+    var profilePicURL = '';
+</script>
+        
+        <div class='container'>
+            {% if current_user.id|int() == id|int() %}
+                <button class='btn btn-success' onclick="editDetails();" style="display: block;" >Edit Profile</button>
+                <hr>
+            {% endif %}
+            <div class='col-md-3'>
+                <span id='profile_pic' class='outline'><img src='/static/three_block.gif'></span>
+                
+            </div>
+            <div class='col-md-9'>
+                <h2><strong><u id='name'><img src='/static/three_block.gif'></u></strong></h2>
+                <div><strong id='role'><img src='/static/three_block.gif'></strong></div>
+            </div>
+            <hr>
+        </div>
+        <br>
+        <div class='container'>
+            <table id='details-table' class='table'table-striped>
+                <tr>
+                    <th>Team</th>
+                    <th>Team Lead</th>
+                    <th>Manager</th>
+                    <th>Location</th>
+                    <th>Regions</th>
+                </tr>
+                <tr>
+                    <td id='team'><img src='/static/three_block.gif'></td>
+                    <td id='team-lead'><img src='/static/three_block.gif'></td>
+                    <td id='manager'><img src='/static/three_block.gif'></td>
+                    <td id='location'><img src='/static/three_block.gif'></td>
+                    <td id='regions'><img src='/static/three_block.gif'></td>
+                </tr>
+            </table>
+        </div>
+        <div class='container'>
+            <h4><strong>Contact Details</strong></h4>
+            <hr>
+            <table id='contact-table' class='table table-striped'>
+                <tr>
+                    <th>Mobile No</th>
+                    <th>Extension</th>
+                    <th>Email</th>
+                    <th>Office Hours</th>
+                </tr>
+                <tr>
+                    <td id='mobile'><img src='/static/three_block.gif'></td>
+                    <td id='extension'><img src='/static/three_block.gif'></td>
+                    <td id='email'><img src='/static/three_block.gif'></td>
+                    <td id='office-hours'><img src='/static/three_block.gif'></td>
+                </tr>
+            </table>
+        </div>
+        <div class='container'>
+            <h4><strong>Duties</strong></h4>
+            <hr>
+            <div id='duties-box'><img src='/static/three_block.gif'></div>
+        </div>
+            
+    <script type='text/javascript' src='/static/getMember.js' ></script>
+{% endblock %}

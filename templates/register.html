@@ -1,0 +1,25 @@
+{% extends 'loginbase.html' %}
+
+{% block content %}
+<div id='error-box' class='alert alert-danger'></div>
+<script type='text/javascript'>document.getElementById("error-box").style.visibility = "hidden";</script>
+<h3>Register Account</h3>
+<hr>
+<div class='reg-flex-center'>
+    <form role='form'> <!--onsubmit='preventDefault();'>-->
+        <div class='form-group'>
+            <label>Email:</label>
+            <input id='email' type='text' class='form-control'>
+            <br>
+            <label>Password:</label>
+            <input id='password' type='password' class='form-control'>
+            <label>Confirm Password:</label>
+            <input id='confirm-pass' type='password' class='form-control'>
+            <br>
+        </div>
+    </form>
+    <button class='btn btn-success' type='button' onclick="registerUser();">Submit</button>
+</div>
+
+<script type='text/javascript' src='/static/registerUser.js'></script>
+{% endblock %}

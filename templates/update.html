@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+    var id = '{{ id }}';
+</script>
+
+{% if current_user.id|int() != id|int() %}
+    <div class='alert alert-danger'>Access Denied. Invalid Credentials.</div>
+{% else %}
+    <h3>Edit Profile Picture</h3>
+    <hr>
+    <img src='/static/img/default.png'>
+    <br><br>
+    <form role='form' id='file-form' method=POST enctype=multipart/form-data action="uploadImage.js">
+            <label class='btn btn-primary btn-file'>
+            Browse 
+    		<input id='file-select' type=file name=photo style="display: none;">
+        </label>
+        <button class='btn btn-success' type=submit>Upload</button>
+		</form>
+    <h3>Update Details</h3>
+    <hr>
+    <form role='form'>
+        <div class='form-group'>
+            <div class='row'>
+            <div class='col-md-3'>
+                <label>First Name:</label>
+                <input type='text' class='form-control' id='first-name'>
+                <label>Role:</label>
+                <input type='text' class='form-control' id='member-role'>
+                <label>Manager:</label>
+                <input type='text' class='form-control' id='manager'>
+                <label>Location:</label>
+                <input type='text' class='form-control' id='location'>
+                <label>Mobile:</label>
+                <input type='text' class='form-control' id='mobile'>
+                <label>Office Hours:</label>
+                <input type='text' class='form-control' id='office-hours'>
+            </div>
+            <div class='col-md-3'>
+                <label>Last Name:</label>
+                <input type='text' class='form-control' id='last-name'>
+                <label>Team:</label>
+                <select class='form-control' id='team'>
+                    <option value='accounts team'>Accounts Team</option>
+                    <option value='development team'>Development Team</option>
+                    <option value='grow team'>Grow Team</option>
+                    <option value='marketing team'>Marketing Team</option>
+                    <option value='operations team'>Operations Team</option>
+                    <option value='sales team'>Sales Team</option>
+                    <option value='support team'>Support Team</option>
+                </select>
+                <label>Team Lead:</label>
+                <input type='text' class='form-control' id='team-lead'>
+                <label>Regions:</label>
+                <select class='form-control' id='regions'>
+                    <option value='all'>All</option>
+                    <option value='ire'>IRE</option>
+                    <option value='uk'>UK</option>
+                    <option value='us'>US</option>
+                    <option value='fin'>FIN</option>
+                </select>
+                <label>Extension:</label>
+                <input type='text' class='form-control' id='extension'>
+            </div>
+            <div class='col-md-6'>
+                <label>Duties:</label>
+                <textarea class='form-control' rows='5' id='duties'></textarea>
+            </div>
+            </div>
+        </div>
+    </form>
+    <button class='btn btn-success' onclick="updateMember();">Submit</button>
+
+    <script type='text/javascript' src='/static/updateMember.js'></script>
+    <script type='text/javascript' src='/static/uploadImage.js'></script>
+{% endif %}
+{% endblock %}

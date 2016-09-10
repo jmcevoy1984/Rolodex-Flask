@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+      href="/static/mystyle.css">
+
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#fe1188a0cc604fbb24a181c4316aeb4ae2a04e34" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <span class="flex-center"><img src='/static/whiteacorn.png'></span>
+    </div>
+    <div class="navbar-collapse collapse" id="fe1188a0cc604fbb24a181c4316aeb4ae2a04e34">
+      <ul class="nav navbar-nav">
+        <li>
+            <span class="navbar-brand">Phorest Rolodex</span>
+        </li>
+    </ul>
+    </div>
+    </div>
+  </div>
+</nav>
+    <div id='main' class='container'>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+    {% for category, message in messages %}
+        {% if category == 'error' %}
+      <div class="alert alert-danger">{{ message }}</div>
+        {% endif %}
+        {% if category == 'success' %}
+      <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+        
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+      {% block content %}
+      
+      {% endblock %}
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>

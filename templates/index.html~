@@ -1,0 +1,111 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+      href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block navbar %}
+    {{nav.top.render()}}
+{% endblock %}
+
+{% block content %}
+    <div id="main" class="container">
+        <div class="row">
+            <div id="sidebar" class="col-md-2">
+                <ul>
+                    <li><a href=''>Operations</a></li>
+                    <li><a href=''>Support</a></li>
+                    <li><a href=''>Training</a></li>
+                    <li><a href=''>Sales</a></li>
+                    <li><a href=''>Grow</a></li>
+                    <li><a href=''>Sales</a></li>
+                </ul>
+            </div>
+            <div id="content" class="col-md-10">
+               <div id="top-row" class="row">
+                    <div id="profile-pic" class="col-md-3">
+                        <img src="{{url_for('.static', filename='phorest.png')}}" width="150" height="150">
+                    </div>
+                    <div id="name-content" class="col-md-4">
+                        <h1>NAME</h1>
+                        <h3>ROLE</h3>
+                        
+                    </div>
+                    <div id="duties-box" class="col-md-5">
+                        <h3>Duties</h3>
+                        <hr>
+                        <p>blah blah blah</p>
+                    </div>
+               </div>
+               <hr>
+               
+               
+
+               <div id="table-container" class="row">
+                    <table class="table table-striped">
+                        <tr>
+                            <td class="row-heading">Team:</td>
+                            <td class="row-content" onclick="makeVis()">
+                             <form id="hide-me" class="form form-horizontal" method="post" role="form">
+                               {{ wtf.form_field(form.test_field) }}
+                             </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Team Lead:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Manager:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Phone No:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Extension:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Location:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Regions:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                        <tr>
+                            <td class="row-heading">Office Hours:</td>
+                            <td class="row-content">body</td>
+                        </tr>
+                    </table>
+               </div>
+            </div>
+        </div>
+    </div>     
+                    
+<script type=text/javascript>
+                    function makeVis(){
+                        
+                        if(document.getElementById('hide-me').style.display === "none"){
+                        
+                            document.getElementById('hide-me').style.display = "inline-block";
+                            document.getElementById('test_field').focus();
+                        }
+                        else{
+                        
+                            document.getElementById('hide-me').style.display = "none";
+                        
+                        }
+                        
+                    }
+                    
+                    document.getElementById("hide-me").style.display = "none";
+                    //document.getElementById("hide-me").onclick = makeVis();
+                    //document.getElementById("test_field").style.visibility="hidden";
+               </script>
+{% endblock %}

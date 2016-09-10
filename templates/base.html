@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+      href="/static/mystyle.css">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#fe1188a0cc604fbb24a181c4316aeb4ae2a04e34" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <span class="flex-center"><img src='/static/whiteacorn.png'></span>
+    </div>
+    <div class="navbar-collapse collapse" id="fe1188a0cc604fbb24a181c4316aeb4ae2a04e34">
+      <ul class="nav navbar-nav">
+        <li>
+            <span class="navbar-brand">Phorest Rolodex</span>
+        </li>
+        <!-- <li>
+          <a href="login">Test</a>
+        </li> -->
+        <li class="dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">Teams
+            <span class="caret"></span>
+          </a>
+          <ul id='teams' class="dropdown-menu">
+            <!--<li>
+              <a href="http://pythonhosted.org/Flask-Bootstrap">Flask-Bootstrap</a>
+            </li>
+            <li>
+              <a href="https://github.com/mbr/flask-appconfig">Flask-AppConfig</a>
+            </li>-->
+            {% for team in teams %}
+                <li><a href='#' id='team-{{loop.index}}'>{{ team }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        </li>
+      </ul>
+      {% if current_user.is_authenticated %}
+<div class="flex-right">
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"> {{ current_user.email }}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="http:/member/{{ current_user.id }}">My Profile</a>
+            </li>
+            <li>
+              <a href="/logout">Log Out</a>
+            </li>
+          </ul>
+        </li>
+    </ul>
+</div>
+        {% endif %}
+    </div>
+  </div>
+</nav>
+
+<nav id="search-bar" class="navbar navbar-default">
+    <div id='inner' class="navbar-collapse collapse">
+        <ul id="search-items" class="nav navbar-nav">
+            <span id="loading-gif"></span>
+            <form class='form-inline' onsubmit="event.preventDefault(); search(document.getElementById('search-box').value);">
+                <div class='form-group'>
+                    <input id="search-box" type='search' class='form-control'>
+                    <button type='button' id='search-button' class='form-control btn btn-primary' onclick="search(document.getElementById('search-box').value);">
+                        <span class="glyphicon glyphicons-lg glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </form>
+        </ul>
+    </div>
+</nav>
+      
+    <div id='main' class='container'>
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      {% block content %}
+      
+      {% endblock %}
+    </div>
+    
+    <script type="text/javascript" src='/static/search.js'></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type='text/javascript'>
+        var teams = document.getElementById('teams');
+        var children = teams.children;
+        var teamArray = [];
+        for(child in children){
+            if (children[child].firstChild !== undefined){
+                teamArray.push(children[child].firstChild);
+            }
+        }
+        for (i = 0; i < teamArray.length; i++){
+            (function(i){
+                    teamArray[i].onclick = function(){
+                        search(teamArray[i].innerHTML);
+                    }
+            })(i);
+        }
+    </script>
+  </body>
+</html>

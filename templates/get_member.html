@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+    var id = '{{ id }}';
+</script>
+
+    <div id='main' class='container'>
+        <div class='container'>
+            <h2><strong><u id='name'><img src='/static/three_block.gif'></u></strong></h2>
+            <span><strong id='role'><img src='/static/three_block.gif'></strong></span>
+            <hr>
+        </div>
+        <div class='container'>
+            <table id='details-table' class='table table-striped'>
+                <tr>
+                    <th>Team</th>
+                    <th>Team Lead</th>
+                    <th>Manager</th>
+                    <th>Location</th>
+                    <th>Regions</th>
+                </tr>
+                <tr>
+                    <td id='team'><img src='/static/three_block.gif'></td>
+                    <td id='team-lead'><img src='/static/three_block.gif'></td>
+                    <td id='manager'><img src='/static/three_block.gif'></td>
+                    <td id='location'><img src='/static/three_block.gif'></td>
+                    <td id='regions'><img src='/static/three_block.gif'></td>
+                </tr>
+            </table>
+        </div>
+        <div class='container'>
+            <h4><strong>Contact Details</strong></h4>
+            <hr>
+            <table id='contact-table' class='table table-striped'>
+                <tr>
+                    <th>Mobile No</th>
+                    <th>Extension</th>
+                    <th>Email</th>
+                    <th>Office Hours</th>
+                </tr>
+                <tr>
+                    <td id='mobile'><img src='/static/three_block.gif'></td>
+                    <td id='extension'><img src='/static/three_block.gif'></td>
+                    <td id='email'><img src='/static/three_block.gif'></td>
+                    <td id='office-hours'><img src='/static/three_block.gif'></td>
+                </tr>
+            </table>
+        </div>
+        <div class='container'>
+            <h4><strong>Duties</strong></h4>
+            <hr>
+            <div id='duties-box'><img src='/static/three_block.gif'></div>
+        </div>
+    </div>
+            
+    <script type='text/javascript' src='/static/getMember.js' ></script>
+    <script type='text/javascript' src='/static/search.js' ></script>
+{% endblock %}
