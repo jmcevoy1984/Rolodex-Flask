@@ -12,7 +12,7 @@ Flask WTF (For WTF Forms)
 FLask Login
 Flask Sqlalchemy (Wrapper for Python SQLalchemy)
 CherryPy (Python HTTP server)
-Pillow (Updated for of PIL [Python Imaging Library)
+Pillow (Updated fork of PIL [Python Imaging Library)
 
 On the frontend I used plain Javascript with AJAX calls to the REST API in the backend.
 
